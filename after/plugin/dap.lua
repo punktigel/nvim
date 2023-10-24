@@ -1,12 +1,31 @@
 -- Debugger
-require('dapui').setup()
+require('dapui').setup({
+    icons = { expanded = "🞃", collapsed = "🞂", current_frame = "⏺"}, -- U+1F783, U+1F782, U+23FA
+    controls = {
+        icons = {
+            pause = "⏸",        -- UTF-8: 9208 U+23F8
+            play = "🞂",         -- U+1F782
+            step_into = "↧",    -- U+21A7
+            step_over = "↷",    -- U+21B7
+            step_out = "↥",     -- U+21A5
+            step_back = "↶",    -- U+21B6
+            run_last = "↻",     -- U+21BB
+            terminate = "🞎",    -- U+25A1
+            disconnect = "!",
+        }
+    }
+}
+)
 
 
-vim.keymap.set('n', '<leader>dt', ':lua require("dapui").toggle() <CR>', { desc = "DapUi - toggle UI"})
-vim.keymap.set('n', '<leader>b', ':DapToggleBreakpoint<CR>', { desc = "DapUi - DapToggle[B]reakpoint"})
-vim.keymap.set('n', '<leader>dc', ':DapContinue<CR>', { desc = "DapUi - Dap[C]ontinue"})
+vim.keymap.set('n', '<leader>dt', ':lua require("dapui").toggle() <CR>', { desc = "Dap UI - toggle UI"})
+vim.keymap.set('n', '<leader>b', ':DapToggleBreakpoint<CR>', { desc = "Dap UI - DapToggle[B]reakpoint"})
+vim.keymap.set('n', '<leader>dc', ':DapContinue<CR>', { desc = "Dap UI - [D]ap [C]ontinue"})
 
 vim.api.nvim_set_keymap('n', '<leader>db', [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>dr', '<cmd>DapToggleBreakpoint<CR> <cmd>DapContinue<CR> <cmd>:lua require("dapui").toggle()<CR>', { desc = "Dap UI -[D]ap [R]un breakpoint"})
+vim.api.nvim_set_keymap('n', '<leader>dk', '<cmd>DapTerminate<CR> <cmd>lua require("dapui").close()<CR>', { desc = "Dap UI - [D]ap [K]ill"})
 
 
 local dap = require('dap')
