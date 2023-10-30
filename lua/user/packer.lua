@@ -7,6 +7,9 @@ return require('packer').startup(function(use)
 
 
     -- Plugins
+    -- Own plugins
+    use '~/GitHub/thisname.nvim'
+
     -- Colorschemes
     use 'Mofiqul/adwaita.nvim'
 
