@@ -39,4 +39,5 @@ vim.keymap.set('n', '<C-h>', '<C-w><', { desc = "Resize window [h] decrease - ho
 vim.keymap.set('n', '<C-l>', '<C-w>>', { desc = "Resize window [l] increase - horizontal"})
 
 
+vim.keymap.set('n', '<leader>i', '<cmd>Inspect<CR>', { desc = "[I]nspect highlighting under the cursor"})
 
