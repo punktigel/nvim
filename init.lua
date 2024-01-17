@@ -5,4 +5,5 @@ local function set_colorscheme(color)
     vim.cmd('colorscheme ' .. colorscheme)
 end
 
-set_colorscheme('thisname_dark')
+-- set your colorscheme
+set_colorscheme()
